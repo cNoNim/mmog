@@ -27,10 +27,10 @@ class Actor : public Object {
 public:
   Actor(char c, point p) : Object(c, p) {}
   virtual std::shared_ptr<void> init() const { return nullptr; }
-  virtual void update(std::weak_ptr<void> data)= 0;
+  virtual void update(std::weak_ptr<void> data) = 0;
   void update() { update(_data); }
-  virtual bool empty() const= 0;
-  virtual Action step()= 0;
+  virtual bool empty() const = 0;
+  virtual Action step() = 0;
 
 private:
   std::shared_ptr<void> _data;

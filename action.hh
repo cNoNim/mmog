@@ -9,15 +9,15 @@ enum class Action_Direction { Up, Left, Down, Right };
 
 class Action {
 public:
-  using Tag= Action_Tag;
-  using Direction= Action_Direction;
+  using Tag = Action_Tag;
+  using Direction = Action_Direction;
 
   template <Tag tag>
   struct tag_t {
     static constexpr Tag value() { return tag; }
   };
-  using none_t= tag_t<Tag::None>;
-  using move_t= tag_t<Tag::Move>;
+  using none_t = tag_t<Tag::None>;
+  using move_t = tag_t<Tag::Move>;
 
   static Action none() { return Action(none_t()); }
   static Action move(Direction direction) {

@@ -41,7 +41,7 @@ public:
 
   virtual Action step() {
     if (queue.empty()) { return Action::none(); }
-    auto action= queue.front();
+    auto action = queue.front();
     queue.pop();
     return action;
   }

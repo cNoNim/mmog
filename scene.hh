@@ -59,10 +59,10 @@ inline char const &Scene::move(point &pt, Action_Direction const &dir) const {
     pt.x++;
     break;
   }
-  while (pt.x < 0) pt.x+= this->width();
-  while (pt.x >= this->width()) pt.x-= this->width();
-  while (pt.y < 0) pt.y+= this->height();
-  while (pt.y >= this->height()) pt.y-= this->height();
+  while (pt.x < 0) pt.x += this->width();
+  while (pt.x >= this->width()) pt.x -= this->width();
+  while (pt.y < 0) pt.y += this->height();
+  while (pt.y >= this->height()) pt.y -= this->height();
   return this->map->at(pt);
 }
 
@@ -70,7 +70,7 @@ inline void Scene::update() {
   for (auto &&actor : actors) {
     actor->update();
     while (!actor->empty()) {
-      auto action= actor->step();
+      auto action = actor->step();
       switch (action.tag()) {
       case Action::Tag::None:
         break;
@@ -83,13 +83,13 @@ inline void Scene::update() {
 }
 
 inline void Scene::draw(std::vector<char> &buffer) const {
-  for (auto y= 0, height= this->height(); y < height; y++)
-    for (auto x= 0, width= this->width(); x < width; x++)
+  for (auto y = 0, height = this->height(); y < height; y++)
+    for (auto x = 0, width = this->width(); x < width; x++)
       buffer.emplace_back(this->map->at(x, y));
 
   for (auto const &actor : actors) {
-    auto position= actor->position();
-    buffer[position.y * this->width() + position.x]= actor->representation();
+    auto position = actor->position();
+    buffer[position.y * this->width() + position.x] = actor->representation();
   }
 }
 

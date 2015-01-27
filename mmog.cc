@@ -6,7 +6,7 @@
 #include <string>
 
 class GameLogic {
-  using time_t= std::chrono::system_clock::time_point;
+  using time_t = std::chrono::system_clock::time_point;
 
   enum class State { Game, Fail, Win };
 
@@ -22,13 +22,13 @@ public:
   void draw() {
     render_target.clear();
     this->level->draw(render_target);
-    int x= 0;
+    int x = 0;
     for (auto const &c : render_target) {
       std::cout << c;
       x++;
       if (x >= this->level->width()) {
         std::cout << std::endl;
-        x= 0;
+        x = 0;
       }
     }
     std::cout << std::flush;
@@ -41,12 +41,12 @@ public:
 
 private:
   std::shared_ptr<mmog::Scene> level;
-  State state= State::Game;
+  State state = State::Game;
   std::vector<char> render_target;
 };
 
 int main(int argc, char *argv[]) try {
-  auto game= GameLogic("maze");
+  auto game = GameLogic("maze");
   while (game.update()) { game.draw(); }
   game.finish();
   return 0;
