@@ -3,9 +3,9 @@
 #pragma once
 
 namespace mmog {
-  struct point {
-    int x, y;
-  };
+struct point {
+  int x, y;
+};
 }
 
 #endif
